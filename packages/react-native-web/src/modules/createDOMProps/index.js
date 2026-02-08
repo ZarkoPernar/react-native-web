@@ -887,8 +887,11 @@ const createDOMProps = (elementType, props, options) => {
       ...options
     }
   );
-  if (className) {
-    domProps.className = className;
+  const resolvedClassName = [domProps.className, className]
+    .filter(Boolean)
+    .join(' ');
+  if (resolvedClassName) {
+    domProps.className = resolvedClassName;
   }
   if (inlineStyle) {
     domProps.style = inlineStyle;

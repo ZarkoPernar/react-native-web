@@ -230,6 +230,7 @@ export type ViewProps = {
   ...AccessibilityProps,
   ...EventProps,
   children?: ?any,
+  className?: ?string,
   dataSet?: { ... },
   dir?: 'ltr' | 'rtl',
   id?: ?string,

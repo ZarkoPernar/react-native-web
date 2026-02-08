@@ -159,6 +159,18 @@ describe('components/Text', () => {
     });
   });
 
+  describe('prop "className"', () => {
+    test('value is set and merged with generated class names', () => {
+      const { container } = render(<Text className="external-class-name" />);
+      const classNames = container.firstChild.className.split(' ');
+
+      expect(classNames).toEqual(
+        expect.arrayContaining(['external-class-name'])
+      );
+      expect(classNames.length).toBeGreaterThan(1);
+    });
+  });
+
   describe('prop "numberOfLines"', () => {
     test('value is set', () => {
       const { container } = render(<Text numberOfLines={3} />);

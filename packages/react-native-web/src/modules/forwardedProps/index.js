@@ -168,5 +168,6 @@ export const touchProps = {
 };
 
 export const styleProps = {
+  className: true,
   style: true
 };

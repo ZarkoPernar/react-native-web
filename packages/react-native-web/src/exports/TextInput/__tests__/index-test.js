@@ -140,6 +140,15 @@ describe('components/TextInput', () => {
     expect(input.value).toEqual(defaultValue);
   });
 
+  test('prop "className" value is set and merged with generated class names', () => {
+    const { container } = render(<TextInput className="external-class-name" />);
+    const input = findInput(container);
+    const classNames = input.className.split(' ');
+
+    expect(classNames).toEqual(expect.arrayContaining(['external-class-name']));
+    expect(classNames.length).toBeGreaterThan(1);
+  });
+
   describe('prop "disabled"', () => {
     test('value "false"', () => {
       const { container } = render(<TextInput />);

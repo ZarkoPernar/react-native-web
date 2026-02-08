@@ -6,6 +6,7 @@
  */
 
 import createDOMProps from '..';
+import StyleSheet from '../../../exports/StyleSheet';
 
 const createProps = (props) => createDOMProps(null, props);
 
@@ -123,6 +124,23 @@ describe('modules/createDOMProps', () => {
         "tabIndex": 0,
       }
     `);
+  });
+
+  test('merges prop "className" with style generated className', () => {
+    const styles = StyleSheet.create({
+      root: {
+        marginTop: 1
+      }
+    });
+    const props = createProps({
+      className: 'external-class-name',
+      style: styles.root
+    });
+
+    expect(props.className.split(' ')).toEqual(
+      expect.arrayContaining(['external-class-name'])
+    );
+    expect(props.className).not.toEqual('external-class-name');
   });
 
   // @deprecated
